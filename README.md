@@ -31,4 +31,4 @@ Specify the recipient's email address in the to variable within the sendemail fu
 Note :
 Make sure to run the script in an environment with a working microphone for voice commands.
 
-The assistant uses the Google speech recognition API, so an internet connection is required for voice recognition.
+The assistant uses the Google speech recognition API, so an internet connection is required for voice recognition
