@@ -1,5 +1,6 @@
-Desktop AI Voice Assistant 
---------Description :
+AI Virtual Assistant 
+
+Description :
 The main aim of a desktop AI assistant is to enhance user productivity and convenience by providing voice-controlled access to information, performing tasks, and automating routine activities on a computer.
 Using the speech_recognition module for voice recognition, the pyttsx3 text-to-speech library, and extra modules for different tasks, this Python script functions as a basic voice assistant. The assistant can send emails, tell the time, and retrieve information from Wikipedia, among other things.
 
