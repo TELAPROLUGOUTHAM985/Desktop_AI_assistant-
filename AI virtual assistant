@@ -1,0 +1,78 @@
+import pyttsx3
+import speech_recognition as sr
+import datetime
+import wikipedia
+import webbrowser
+import os
+import smtplib
+
+
+a="sir/madam"
+print("initializing assistant")
+engine=pyttsx3.init("sapi5")
+voices=engine.getproperty('voices')
+engine.setproperty('voice',voices[0].id)
+
+
+#this function will convert text to speech
+def speak(text):
+    engine.say(text)
+    engine.runAndwait()
+
+#this function will wish according to the time
+def Wishme():
+    hour=int(datetime.datetime.now().hour)
+    if hour>=0 and hour<12:
+        speak("good morning"+a)
+    elif hour>=12 and hour<18:
+        speak("good afternoon"+a)
+    else:
+        speak("good evening"+a)
+
+#this function will take command from microphone
+def takecommand():
+    r=sr.Recognizer()
+    with sr.Microphone() as Source:
+        print("Listening....")
+        audio=r.listen(Source)
+        try:
+            print("recognizing.....")
+            query=r.recognize_google(audio,language="eng-in")
+            print(f"user used:{query}\n")
+        except Exception as e:
+            print("Can you please say again....")
+            query=None
+        return query
+
+#this function is used to send emails
+def sendemail(to,content):
+    server=smtplib.SMTP("smtp@gamil.com",587)
+    server.ehlo()
+    server.login("gouthamtelaprolu4@gmail.com","bannu@ammu")
+    server.sendemail("telaproluramesh84@gmail.com",to,content)
+    server.close()
+
+#main function
+def main():
+    if "wikipedia" in query.lower():
+        speak("searching wikipedia....")
+        query=query.replace("wikipedia","")
+        results=wikipedia.summary(query,sentences=2)
+        print(results)
+        speak(results)
+
+    elif 'the time' in query.lower():
+        strTime=datetime.datetime.now().strftime("%H:%M:%S")
+        speak(f"{a} the time is {strTime}")
+    elif 'email' in query.lower():
+        try:
+            speak("what should I send")
+            content=takecommand()
+            to="gouthamtelaprolu4@gmail.com"
+            sendemail(to,content)
+            speak("email has been sent successfully")
+        except Exception as e:
+            print(e)
+
+main()
+Wishme()
