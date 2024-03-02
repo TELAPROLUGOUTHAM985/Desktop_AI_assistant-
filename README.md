@@ -6,9 +6,9 @@ Using the speech_recognition module for voice recognition, the pyttsx3 text-to-s
 
 
 Necessary libraries to be installed to develop a desktop ai assistant:
-Speech recognition 
-Pyttsx3
-Wikipedia 
+Speech recognition, 
+Pyttsx3,
+Wikipedia, 
 smtplib
 
 
